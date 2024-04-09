@@ -1,0 +1,178 @@
+.header {
+  background: -webkit-linear-gradient(top, #000000, #20202000);
+  width: 100vw;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  position: fixed;
+  .not-responsive {
+    animation: slideInBottom 2.5s;
+    position: absolute;
+    z-index: 1;
+  }
+  .nav {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    a {
+      text-decoration: none;
+    }
+    h6 {
+      list-style: none;
+      text-decoration: none;
+      font-size: 1em;
+      font-family: "Roboto", sans-serif;
+      font-weight: 800;
+      color: white;
+      transition: font-size 0.3s ease-in-out;
+    }
+    h6:hover{
+      font-size: 1.1em;
+    }
+    .rightN {
+      display: flex;
+      width: 20%;
+      justify-content: space-between;
+      flex-direction: row;
+      // gap: 3rem;
+      animation: slideInRight 2.5s;
+    }
+    .leftN {
+      width: 20%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      // gap: 3rem;
+      animation: slideInLeft 2.5s;
+    }
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(-180px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-550px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(550px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 989px) {
+  .nav {
+    display: none !important;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 5rem;
+    justify-content: space-between;
+  }
+  .nav-responsive {
+    position: fixed;
+    margin-top: 15px;
+    .button-nav{
+      .button {
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        place-items: center;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      
+      .button > svg {
+        border-radius: inherit;
+        padding: 0.5rem;
+        fill: #fff;
+       /* SVG color */
+        width: 38px;
+       /* default width 32px */
+        height: 38px;
+       /* default height 32px */
+      }
+      
+      .button > svg:active {
+        background-color: rgba(65, 65, 65, 0.5);
+      }
+      
+      .button > svg:not(:active) {
+        animation: fadeOut 0.9s;
+      }
+      
+      @keyframes fadeOut {
+        0% {
+          outline: 1px solid rgba(90, 90, 90, 0.5);
+       /* If you use border it will take space inside and slightly move the SVG */
+        }
+      
+        100% {
+          background-color: transparent;
+        }
+      }      
+    }
+  }
+  .offcanvas-body {
+    width: 100vw;
+    height: 100%;
+    // background-image: url("../../../public/BackgroundRustic.jpg"); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .close-button {
+    color: aliceblue !important;
+  }
+  .offcanvas {
+    color: aliceblue;
+  }
+  .navbar-toggler {
+    color: white;
+    background-color: transparent;
+    border-color: white;
+    box-shadow: 4px 4px 6px rgba(255, 255, 255, 0.2);
+  }
+  .header {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 990px) {
+  .nav-responsive {
+    display: none;
+  }
+}
