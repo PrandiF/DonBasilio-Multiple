@@ -1,0 +1,31 @@
+#card {
+  display: flex;
+  padding: 10px 15px;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.419);
+  backdrop-filter: blur(1px);
+  box-shadow: 0 10px 40px rgba(75, 75, 75, 0.1);
+  border-radius: 10px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+
+  .name {
+    display: flex;
+    margin: auto;
+    font-family: "Hermona", sans-serif;
+    font-size: 23px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  }
+  .profileImg {
+    display: flex;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+#card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
