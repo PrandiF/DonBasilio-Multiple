@@ -5,15 +5,16 @@ import { peluqueros } from "./dataPeluqueros";
 import { useState } from "react";
 
 const SacarTurno = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(null);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const handleMouseEnter = (index) => {
+    setIsHovered(index);
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+  const handleMouseLeave = (index) => {
+    setIsHovered(index);
   };
+
   return (
     <section id="SACARTURNO">
       <img src='./BackgroundRustic.jpg' alt='imgS'className='imgBackground'/>
@@ -23,21 +24,19 @@ const SacarTurno = () => {
         </Reveal>
       </div>
       <div className="cards">
-        {peluqueros.map((peluquero)=> (
-          <div className="card">
+        {peluqueros.map((peluquero, index)=> (
+          // <div onMouseEnter={() => handleCardSelect(index)} onMouseLeave={() => handleCardSelect(null)} className={`${cardSelect === null ? 'cardVisible' : cardSelect === index ? 'cardVisible' : 'cardHidden'}`} key={index}>
+          <div className={`${isHovered === null ? 'cardVisible' : isHovered === index ? 'cardVisible' : 'cardHidden'}`} key={index}>
             <img
               src={peluquero.foto}
               alt={peluquero.nombre}
               className="imgBackCard"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={()=>handleMouseEnter(index)} onMouseLeave={()=>handleMouseLeave(null)}
             />
-            {isHovered && (
-              <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={`infoHover ${isHovered ? 'visible' : ''}`}>
-                <h3>{peluquero.nombre}</h3>
-                <ModalCalendly url={peluquero.url} />
-              </div>
-            )}
+            <div onMouseEnter={()=>handleMouseEnter(index)} onMouseLeave={()=>handleMouseLeave(null)} className={`${isHovered === index ? 'infoHoverVisible'  : 'infoHoverHidden'}`}>
+              <h3>{peluquero.nombre}</h3>
+              <ModalCalendly url={peluquero.url} />
+            </div>
         </div>
         ))}
       </div>
